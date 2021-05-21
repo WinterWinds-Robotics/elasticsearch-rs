@@ -131,7 +131,7 @@ fn build_meta() -> String {
 
 /// Builds a HTTP transport to make API calls to Elasticsearch
 pub struct TransportBuilder {
-    client_builder: reqwest::ClientBuilder,
+    client_builder: reqwest::Client::builder,
     conn_pool: Box<dyn ConnectionPool>,
     credentials: Option<Credentials>,
     #[cfg(any(feature = "native-tls", feature = "rustls-tls"))]
@@ -152,7 +152,7 @@ impl TransportBuilder {
         P: ConnectionPool + Debug + Clone + Send + 'static,
     {
         Self {
-            client_builder: reqwest::ClientBuilder::new(),
+            client_builder: reqwest::Client::builder::new(),
             conn_pool: Box::new(conn_pool),
             credentials: None,
             #[cfg(any(feature = "native-tls", feature = "rustls-tls"))]
