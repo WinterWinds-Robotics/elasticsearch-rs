@@ -152,7 +152,7 @@ impl TransportBuilder {
         P: ConnectionPool + Debug + Clone + Send + 'static,
     {
         Self {
-            client_builder: reqwest::Client::builder::new(),
+            client_builder: reqwest::Client::builder(),
             conn_pool: Box::new(conn_pool),
             credentials: None,
             #[cfg(any(feature = "native-tls", feature = "rustls-tls"))]
